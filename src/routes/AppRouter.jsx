@@ -1,5 +1,6 @@
 import { useState } from "react";
-/* import { Route, Router, Routes } from "react-router-dom" */
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { Home } from "../components/Home";
 
 export const AppRouter = () => {
     const [darkMode, setDarkMode] = useState(false);
@@ -14,25 +15,26 @@ export const AppRouter = () => {
         navElement.classList.toggle('dark-mode', !darkMode);
     };
     return (
-        <>
+        <Router>
+            {/* Menú de Navegación */}
             <header>
-                <div className={`container App ${darkMode ? 'theme-dark' : 'theme-light'}`}>
+                <div className={`container ${darkMode ? 'theme-dark' : 'theme-light'}`}>
                     <nav className={`navbar navbar-expand-md fixed-top ${darkMode ? 'bg-success' : 'bg-primary'}`} data-bs-theme="dark">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">
+                            <NavLink to='/' className="navbar-brand">
                                 <img src="/src/assets/Market.png" alt="Logo" width="50" height="50" className="d-inline-block me-2" />
                                 Bootstrap
-                            </a>
+                            </NavLink>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarScroll">
                                 <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" id="nav-scroll">
                                     <li className="nav-item">
-                                        <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+                                        <NavLink to='/' className="nav-link active" aria-current="page" >Inicio</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Articulos</a>
+                                        <NavLink to='/Home' className="nav-link" >Articulos</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">Acerca de</a>
@@ -40,27 +42,22 @@ export const AppRouter = () => {
                                 </ul>
                                 <button type="button" className={`btn ${darkMode ? 'btn-outline-warning' : 'btn-outline-dark'}`} onClick={toggleTheme}>
                                     {darkMode ? (<i className="bi bi-brightness-high-fill"></i>) : (<i className="bi bi-moon-stars-fill"></i>)}
-
                                 </button>
                             </div>
                         </div>
                     </nav>
                 </div>
             </header>
-            {/* Menú de Navegación */}
 
-            {/* Configurar rutas
+
+            {/* Configurar rutas*/}
+
             <Routes>
-                <Route>
-                    <Route path="/" element={<Home />} />
-                                <Route path="/Inicio" element={<Home />} />
-                                <Route path="/Inicio" element={<Home />} />
-                                <Route path="/Inicio" element={<Home />} />
-                                <Route path="/Inicio" element={<Home />} />
-                                <Route path="*" element={<NotFound />} />
-                            </Route>
-                        </Routes>*/}
-        </>
 
+                <Route path='/' element={<div className="content"><Home /></div>}></Route>
+                <Route path='/Home' element={<div className="content"><Home /></div>}></Route>
+
+            </Routes>
+        </Router>
     )
 }
