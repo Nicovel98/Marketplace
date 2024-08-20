@@ -6,9 +6,8 @@
 .content {
   width: 70%;
   min-height: 350px;
-  background-color: #edf2f4;
   border-radius: 15px;
   border: 1px solid gray;
   margin: 15px auto;
-  padding: 25px;
+  padding: 45px;
 }

@@ -6,9 +6,9 @@ function App() {
 
   return (
     <Context.Provider value={{}}>
-      <div>
+      <>
         <AppRouter />
-      </div>
+      </>
     </Context.Provider>
   )
 }
